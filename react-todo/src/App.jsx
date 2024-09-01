@@ -1,13 +1,12 @@
-import React from 'react'
-import TodoList from './TodoList'
-import './App.css'
+import React from 'react';
+import TodoList from './TodoList'; // Adjust the path as needed
 
 function App() {
   return (
-    
-     <TodoList />
-  
-  )
+    <div className="App">
+      <TodoList />
+    </div>
+  );
 }
 
-export default App
+export default App;

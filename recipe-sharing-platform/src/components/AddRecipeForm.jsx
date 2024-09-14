@@ -7,19 +7,25 @@ const AddRecipeForm = () => {
   const [steps, setSteps] = useState("");
   const [errors, setErrors] = useState({});
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-
-    // Simple validation
+  // Validation function
+  const validate = () => {
     let validationErrors = {};
     if (!title) validationErrors.title = "Title is required";
     if (!ingredients) validationErrors.ingredients = "Ingredients are required";
     if (!steps) validationErrors.steps = "Steps are required";
 
-    // Additional validation
     const ingredientsList = ingredients.split("\n").filter((item) => item.trim() !== "");
     if (ingredientsList.length < 2) validationErrors.ingredients = "Please provide at least two ingredients";
 
+    return validationErrors;
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    // Call validate function
+    const validationErrors = validate();
+    
     if (Object.keys(validationErrors).length === 0) {
       // Handle form submission (e.g., send data to a server)
       console.log("Form submitted", { title, ingredients, steps });

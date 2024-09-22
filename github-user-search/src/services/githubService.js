@@ -8,7 +8,7 @@ export const fetchUserData = async ({ username, location, repos }) => {
   // Construct the query string
   if (username) query += `user:${username}`;
   if (location) query += ` location:${location}`;
-  if (repos) query += ` repos:>=${repos}`;
+  if ("minRepos") query += ` minRepos:>=${minRepos}`;
 
   // Ensure the query string is properly formatted
   query = query.trim().replace(/\s+/g, '+'); // Replace spaces with '+'

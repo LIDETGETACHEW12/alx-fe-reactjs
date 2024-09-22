@@ -1,13 +1,13 @@
+// src/services/githubService.js
 import axios from 'axios';
 
 const BASE_URL = 'https://api.github.com/users';
 
-export const fetchGitHubUser = async (username) => {
+export const fetchUserData = async (username) => {
   try {
     const response = await axios.get(`${BASE_URL}/${username}`);
     return response.data;
   } catch (error) {
-    console.error('Error fetching GitHub user:', error);
-    throw error;
+    throw new Error('User not found or API error');
   }
 };
